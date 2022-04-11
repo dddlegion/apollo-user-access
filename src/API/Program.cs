@@ -9,6 +9,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+string? port = Environment.GetEnvironmentVariable("PORT");
+
+if (!string.IsNullOrWhiteSpace(port))
+{
+    app.Urls.Add("http://*:" + port);
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
