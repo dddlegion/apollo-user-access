@@ -1,0 +1,14 @@
+version: 2.1
+
+jobs:
+  tests:
+    machine:
+      image: ubuntu-2004:current
+    steps:
+      - checkout
+      - run: make ci-tests
+      
+workflows:
+  test:
+    jobs:
+      - tests

@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  sdk:
+    container_name: apollo_user_access_sdk
+    build:
+      context: ./src/
+      dockerfile: sdk.Dockerfile

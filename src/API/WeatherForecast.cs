@@ -1,4 +1,4 @@
-namespace Apollo.UserAccess;
+namespace Apollo.UserAccess.API;
 
 public class WeatherForecast
 {
