@@ -1,7 +1,7 @@
 using Apollo.UserAccess.Domain;
 using NUnit.Framework;
 
-namespace Apollo.UserAccess.Tests.Domain;
+namespace Apollo.UserAccess.Tests.Unit.Domain;
 
 [TestFixture]
 public class UserTests

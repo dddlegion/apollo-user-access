@@ -6,7 +6,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.UserAccess.Domain", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{60A70950-8961-4620-94D6-5916CBA11F02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.UserAccess.Tests.Domain", "Tests\Domain\Apollo.UserAccess.Tests.Domain.csproj", "{25508628-DC68-443E-8BB4-F966C9DEAC90}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.UserAccess.Tests.Unit", "Tests\Unit\Apollo.UserAccess.Tests.Unit.csproj", "{F34F706E-7227-44E9-A7EA-8425C2737D33}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,12 +22,12 @@ Global
 		{512FA676-A397-49A4-AB8A-C0C226694903}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{512FA676-A397-49A4-AB8A-C0C226694903}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{512FA676-A397-49A4-AB8A-C0C226694903}.Release|Any CPU.Build.0 = Release|Any CPU
-		{25508628-DC68-443E-8BB4-F966C9DEAC90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{25508628-DC68-443E-8BB4-F966C9DEAC90}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{25508628-DC68-443E-8BB4-F966C9DEAC90}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{25508628-DC68-443E-8BB4-F966C9DEAC90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F34F706E-7227-44E9-A7EA-8425C2737D33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F34F706E-7227-44E9-A7EA-8425C2737D33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F34F706E-7227-44E9-A7EA-8425C2737D33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F34F706E-7227-44E9-A7EA-8425C2737D33}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{25508628-DC68-443E-8BB4-F966C9DEAC90} = {60A70950-8961-4620-94D6-5916CBA11F02}
+		{F34F706E-7227-44E9-A7EA-8425C2737D33} = {60A70950-8961-4620-94D6-5916CBA11F02}
 	EndGlobalSection
 EndGlobal
