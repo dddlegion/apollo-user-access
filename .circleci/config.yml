@@ -1,14 +1,32 @@
 version: 2.1
 
+orbs:
+  heroku: circleci/heroku@0.0.10
+
 jobs:
-  tests:
+  test:
     machine:
       image: ubuntu-2004:current
     steps:
       - checkout
       - run: make ci-tests
+  
+  deploy:
+    executor: heroku/default
+    steps:
+      - checkout
+      - heroku/install
+      - heroku/deploy-via-git:
+          app-name: $HEROKU_APP_NAME
       
 workflows:
-  test:
+  main:
     jobs:
-      - tests
+      - test
+      - hold:
+          requires:
+            - test
+          type: approval
+      - deploy:
+          requires:
+            - hold
