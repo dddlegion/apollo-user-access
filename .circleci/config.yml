@@ -36,13 +36,9 @@ jobs:
       - setup_remote_docker:
           version: 20.10.12
       - run:
-          name: Build Docker image
-          command: |
-            docker build -t apollo-user-access:circleci ./src/
-            docker images
-      - run:
           name: Pushing to heroku registry
           command: |
+            cd src/
             heroku container:login
             heroku container:push apollo-user-access:circleci -a $HEROKU_APP_NAME
             heroku container:release apollo-user-access:circleci -a $HEROKU_APP_NAME
