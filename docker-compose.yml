@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  web:
+    container_name: apollo_user_access_api
+    build:
+      context: ./src/
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.user_access_api.rule=Host(`useraccess.${HOST}`)"
+      - "traefik.http.routers.user_access_api.tls=true"
+      - "traefik.http.routers.user_access_api.entrypoints=http,https"
+      # - "traefik.http.services.<service_name>.loadbalancer.server.port=<port>" if port is not 80
+    networks:
+      - apollo
+
+networks:
+  apollo:
+    external: true

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.UserAccess.API", "Apollo.UserAccess.API\Apollo.UserAccess.API.csproj", "{A9CA1C98-8462-4D00-BB98-8DDA904CC598}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Apollo.UserAccess.Domain", "Apollo.UserAccess.Domain\Apollo.UserAccess.Domain.csproj", "{512FA676-A397-49A4-AB8A-C0C226694903}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A9CA1C98-8462-4D00-BB98-8DDA904CC598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9CA1C98-8462-4D00-BB98-8DDA904CC598}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9CA1C98-8462-4D00-BB98-8DDA904CC598}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9CA1C98-8462-4D00-BB98-8DDA904CC598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{512FA676-A397-49A4-AB8A-C0C226694903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{512FA676-A397-49A4-AB8A-C0C226694903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{512FA676-A397-49A4-AB8A-C0C226694903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{512FA676-A397-49A4-AB8A-C0C226694903}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
