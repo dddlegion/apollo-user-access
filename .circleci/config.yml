@@ -40,8 +40,8 @@ jobs:
           command: |
             cd src/
             heroku container:login
-            heroku container:push apollo-user-access:circleci -a $HEROKU_APP_NAME
-            heroku container:release apollo-user-access:circleci -a $HEROKU_APP_NAME
+            heroku container:push web -a $HEROKU_APP_NAME
+            heroku container:release web -a $HEROKU_APP_NAME
       
 workflows:
   main:
