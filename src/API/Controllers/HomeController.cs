@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Apollo.UserAccess.Controllers;
+namespace Apollo.UserAccess.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]

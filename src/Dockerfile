@@ -5,10 +5,10 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Apollo.UserAccess.API/Apollo.UserAccess.API.csproj", "Apollo.UserAccess.API/"]
-RUN dotnet restore "Apollo.UserAccess.API/Apollo.UserAccess.API.csproj"
+COPY ["API/Apollo.UserAccess.API.csproj", "API/"]
+RUN dotnet restore "API/Apollo.UserAccess.API.csproj"
 COPY . .
-WORKDIR "/src/Apollo.UserAccess.API"
+WORKDIR "/src/API"
 RUN dotnet build "Apollo.UserAccess.API.csproj" -c Release -o /app/build
 
 FROM build AS publish
