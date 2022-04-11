@@ -6,7 +6,7 @@ jobs:
       image: ubuntu-2004:current
     steps:
       - checkout
-      - run: make tests
+      - run: make ci-tests
       
 workflows:
   test:

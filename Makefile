@@ -10,6 +10,10 @@ stop:
 down: 
 	docker-compose down
 
-tests:
-	docker-compose up -d --build sdk
-	docker-compose run sdk dotnet test --logger:trx
+ci-tests: ci-run-tests ci-cleanup
+
+ci-cleanup:
+	docker-compose -f docker-compose.ci.yml down --remove-orphans
+
+ci-run-tests:
+	docker-compose -f docker-compose.ci.yml run sdk dotnet test --logger:trx

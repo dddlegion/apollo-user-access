@@ -13,12 +13,6 @@ services:
     networks:
       - apollo
 
-  sdk:
-    container_name: apollo_user_access_sdk
-    build:
-      context: ./src/
-      dockerfile: sdk.Dockerfile
-
 networks:
   apollo:
     external: true
