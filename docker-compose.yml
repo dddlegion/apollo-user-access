@@ -10,6 +10,9 @@ services:
       - "traefik.http.routers.user_access_api.rule=Host(`useraccess.${HOST}`)"
       - "traefik.http.routers.user_access_api.tls=true"
       - "traefik.http.routers.user_access_api.entrypoints=http,https"
+    expose:
+      - "80"
+      - "443"
     networks:
       - apollo
 
