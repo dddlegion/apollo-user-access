@@ -1,14 +1,15 @@
+using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Apollo.UserAccess.API.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("/")]
 public class HomeController : ControllerBase
 {
     [HttpGet()]
-    public IActionResult Index()
+    public ContentResult Index()
     {
-        return Ok("I'm ok.");
+        return base.Content("<h1>SOSY HUI</h1>", "text/html");
     }
 }
