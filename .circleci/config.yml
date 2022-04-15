@@ -14,34 +14,34 @@ jobs:
           command: |
             make ci-tests
   
-  build:
-    machine: true
-    steps:
-      - checkout
-      - run:
-          name: Build Docker image
-          command: |
-            docker build -t apollo-user-access:circleci ./src/
-            docker images
+#  build:
+#    machine: true
+#    steps:
+#      - checkout
+#      - run:
+#          name: Build Docker image
+#          command: |
+#            docker build -t apollo-user-access:circleci ./src/
+#            docker images
   
-  deploy:
-    executor: heroku/default
-    steps:
-      - checkout
-      - run:
-          name: Storing previous commit
-          command: |
-            git rev-parse HEAD > ./commit.txt
-      - heroku/install
-      - setup_remote_docker:
-          version: 20.10.12
-      - run:
-          name: Pushing to heroku registry
-          command: |
-            cd src/
-            heroku container:login
-            heroku container:push web -a $HEROKU_APP_NAME
-            heroku container:release web -a $HEROKU_APP_NAME
+#  deploy:
+#    executor: heroku/default
+#    steps:
+#      - checkout
+#      - run:
+#          name: Storing previous commit
+#          command: |
+#            git rev-parse HEAD > ./commit.txt
+#      - heroku/install
+#      - setup_remote_docker:
+#          version: 20.10.12
+#      - run:
+#          name: Pushing to heroku registry
+#          command: |
+#            cd src/
+#            heroku container:login
+#            heroku container:push web -a $HEROKU_APP_NAME
+#            heroku container:release web -a $HEROKU_APP_NAME
       
 workflows:
   main:
@@ -51,9 +51,9 @@ workflows:
           requires:
             - test
           type: approval
-      - build:
-          requires:
-            - hold
-      - deploy:
-          requires:
-            - build
+#      - build:
+#          requires:
+#            - hold
+#      - deploy:
+#          requires:
+#            - build
