@@ -47,10 +47,10 @@ workflows:
   main:
     jobs:
       - test
-      - hold:
-          requires:
-            - test
-          type: approval
+#      - hold:
+#          requires:
+#            - test
+#          type: approval
 #      - build:
 #          requires:
 #            - hold
