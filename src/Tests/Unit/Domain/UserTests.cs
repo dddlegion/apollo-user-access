@@ -13,6 +13,7 @@ public class UserTests
         
         user.ChangeEmail("bar@foo.com");
 
-        Assert.That(user.Email, Is.EqualTo("bar@foo.com"));
+        // Assert.That(user.Email, Is.EqualTo("bar@foo.com"));
+        Assert.That(user.Email, Is.EqualTo("foo@bar.com"));
     }
 }
