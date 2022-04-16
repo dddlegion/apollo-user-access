@@ -16,13 +16,15 @@ api:
   securityContext: {}
   
   service:
-    type: ClusterIP
+    type: NodePort
     port: 80
+    targetPort: 80
   
   ingress:
     enabled: true
     annotations:
-      nginx.ingress.kubernetes.io/rewrite-target: "/"
+      kubernetes.io/ingress.class: "gce"
+#      nginx.ingress.kubernetes.io/rewrite-target: "/"
 #      kubernetes.io/tls-acme: "true"
     hosts:
       - host: apollo.dddlegion.tech
