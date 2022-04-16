@@ -23,14 +23,14 @@ api:
   ingress:
     enabled: true
     annotations:
-      kubernetes.io/ingress.class: "gce"
-#      nginx.ingress.kubernetes.io/rewrite-target: "/"
+#      kubernetes.io/ingress.class: "gce"
+      nginx.ingress.kubernetes.io/rewrite-target: "/"
 #      kubernetes.io/tls-acme: "true"
     hosts:
       - host: apollo.dddlegion.tech
         paths:
           - path: /
-            pathType: Prefix
+            pathType: ImplementationSpecific
     tls: []
     #  - secretName: chart-example-tls
     #    hosts:
