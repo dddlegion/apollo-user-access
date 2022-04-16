@@ -7,7 +7,6 @@ orbs:
 
 jobs:
   build:
-    descriptiom: Build and push image to Google Container Registry
     machine: true
     steps:
       - checkout
@@ -22,7 +21,6 @@ jobs:
           tag: $CIRCLE_WORKFLOW_ID-$CIRCLE_SHA1
           registry-url: eu.gcr.io
   test:
-    description: Run tests
     machine: true
     steps:
       - checkout
@@ -31,11 +29,9 @@ jobs:
           command: |
             make ci-tests
   deploy:
-    description: Deploy application to Google Kubernetes Engine
     machine: true
     steps:
       - gcp-gke/install
-      - gcp-gke/init
       - run:
           name: Upgrade helm chart
           command: |
@@ -45,7 +41,7 @@ workflows:
   main:
     jobs:
       - build
-      - test
+      - test:
           requires:
             - build
       - hold:
