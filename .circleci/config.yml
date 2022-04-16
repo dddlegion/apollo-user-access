@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  kubernetes: circleci/kubernetes@1.3.0
   gcp-cli: circleci/gcp-cli@2.4.0
   gcr: circleci/gcp-gcr@0.15.0
   helm: circleci/helm@1.2.0
@@ -12,13 +13,13 @@ jobs:
       - checkout
       - gcr/gcr-auth
       - gcr/build-image:
-          image: dddlegion-apollo/user-access # possibly move to env variable
+          image: $CI_API_IMAGE
           tag: $CIRCLE_WORKFLOW_ID-$CIRCLE_SHA1
           path: ./src
           docker-context: ./src
           registry-url: eu.gcr.io
       - gcr/push-image:
-          image: dddlegion-apollo/user-access # possibly move to env variable
+          image: $CI_API_IMAGE
           tag: $CIRCLE_WORKFLOW_ID-$CIRCLE_SHA1
           registry-url: eu.gcr.io
   test:
@@ -35,6 +36,7 @@ jobs:
       image: ubuntu-2004:current
     steps:
       - checkout
+      - kubernetes/install-kubectl
       - gcp-cli/initialize
       - helm/install-helm-client:
           version: v3.7.0
