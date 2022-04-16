@@ -15,6 +15,7 @@ jobs:
           image: dddlegion-apollo/user-access # possibly move to env variable
           tag: $CIRCLE_WORKFLOW_ID-$CIRCLE_SHA1
           path: ./src
+          docker-context: ./src
           registry-url: eu.gcr.io
       - gcr/push-image:
           image: dddlegion-apollo/user-access # possibly move to env variable
