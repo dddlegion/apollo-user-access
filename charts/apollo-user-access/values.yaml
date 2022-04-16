@@ -16,13 +16,10 @@ api:
         pullPolicy: IfNotPresent
         tag: ""
       port: 80
+    resources: { }
+    tolerations: [ ]
+    affinity: { }
   
-  nodeSelector:
-    kubernetes.io/os: linux
-    kubernetes.io/arch: amd64
-  
-  resources: {}
-  
-  tolerations: []
-  
-  affinity: {}
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.io/arch: amd64
