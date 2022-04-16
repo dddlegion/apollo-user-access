@@ -15,7 +15,7 @@ ci-deploy:
 	kubectl config current-context
 	helm upgrade --install apollo-user-access-release ./charts/apollo-user-access/ \
 		--namespace=default \
- 		--set api.image.tag="${CIRCLE_WORKFLOW_ID}-${CIRCLE_SHA1}" \
+ 		--set api.deployment.container.image.tag="${CIRCLE_WORKFLOW_ID}-${CIRCLE_SHA1}" \
  		--debug
 
 ci-tests: ci-run-tests ci-cleanup
