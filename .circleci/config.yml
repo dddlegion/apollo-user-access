@@ -35,7 +35,6 @@ jobs:
       image: ubuntu-2004:current
     steps:
       - checkout
-      - gcp-cli/install
       - gcp-cli/initialize
       - helm/install-helm-client:
           version: v3.7.0
