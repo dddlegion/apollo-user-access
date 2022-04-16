@@ -31,7 +31,8 @@ jobs:
           command: |
             make ci-tests
   deploy:
-    machine: true
+    machine:
+      image: ubuntu-2004:current
     steps:
       - gcp-gke/install
       - run:
