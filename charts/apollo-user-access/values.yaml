@@ -23,7 +23,7 @@ api:
     enabled: true
     annotations:
       nginx.ingress.kubernetes.io/rewrite-target: "/"
-      kubernetes.io/tls-acme: "true"
+#      kubernetes.io/tls-acme: "true"
     hosts:
       - host: apollo.dddlegion.tech
         paths:
