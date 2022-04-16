@@ -1,7 +1,6 @@
 version: 2.1
 
 orbs:
-  gcp-gke: circleci/gcp-gke@1.4.0
   gcr: circleci/gcp-gcr@0.15.0
   helm: circleci/helm@1.2.0
 
@@ -35,7 +34,8 @@ jobs:
       image: ubuntu-2004:current
     steps:
       - checkout
-      - gcp-gke/install
+      - helm/install-helm-client:
+          version: v3.7.0
       - run:
           name: Upgrade helm chart
           command: |
