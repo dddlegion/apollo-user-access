@@ -24,17 +24,11 @@ api:
     annotations:
       nginx.ingress.kubernetes.io/rewrite-target: "/"
       kubernetes.io/tls-acme: "true"
-    http:
+    hosts:
       - host: apollo.dddlegion.tech
-        paths: ["/"]
-#    https:
-#      - host: apollo.dddlegion.tech
-#        paths: [ "/" ]
-#    hosts:
-#      - host: apollo.dddlegion.tech
-#        paths:
-#          - path: /
-#            pathType: Prefix
+        paths:
+          - path: /
+            pathType: Prefix
     tls: []
     #  - secretName: chart-example-tls
     #    hosts:
