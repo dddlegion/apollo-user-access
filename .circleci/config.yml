@@ -22,7 +22,8 @@ jobs:
           tag: $CIRCLE_WORKFLOW_ID-$CIRCLE_SHA1
           registry-url: eu.gcr.io
   test:
-    machine: true
+    machine:
+      image: ubuntu-2004:current
     steps:
       - checkout
       - run:
