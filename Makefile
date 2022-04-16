@@ -11,6 +11,8 @@ down:
 	docker-compose down
 
 ci-deploy:
+	gcloud container clusters get-credentials ${CI_K8S_CLUSTER}
+	kubectl config current-context
 	helm upgrade --install apollo-user-access-release ./charts/apollo-user-access/ \
 		--namespace=default \
  		--set api.image.tag="${CIRCLE_WORKFLOW_ID}-${CIRCLE_SHA1}" \
