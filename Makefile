@@ -10,6 +10,12 @@ stop:
 down: 
 	docker-compose down
 
+ci-deploy:
+	helm upgrade --install apollo-user-access-release ./charts/apollo-user-access/ \
+		--namespace=default \
+ 		--set api.image.tag="${CIRCLE_WORKFLOW_ID}-${CIRCLE_SHA1}" \
+ 		--debug
+
 ci-tests: ci-run-tests ci-cleanup
 
 ci-cleanup:

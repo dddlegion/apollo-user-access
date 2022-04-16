@@ -1,59 +1,57 @@
 version: 2.1
 
 orbs:
-  heroku: circleci/heroku@1.0.1
+  gcp-gke: circleci/gcp-gke@1.4.0
+  gcr: circleci/gcp-gcr@0.15.0
+  helm: circleci/helm@1.2.0
 
 jobs:
+  build:
+    descriptiom: Build and push image to Google Container Registry
+    machine: true
+    steps:
+      - checkout
+      - gcr/gcr-auth
+      - gcr/build-image:
+          image: dddlegion-apollo/user-access # possibly move to env variable
+          tag: $CIRCLE_WORKFLOW_ID-$CIRCLE_SHA1
+          docker-context: ./src/
+          registry-url: eu.gcr.io
+      - gcr/push-image:
+          image: dddlegion-apollo/user-access # possibly move to env variable
+          tag: $CIRCLE_WORKFLOW_ID-$CIRCLE_SHA1
+          registry-url: eu.gcr.io
   test:
-    machine:
-      image: ubuntu-2004:current
+    description: Run tests
+    machine: true
     steps:
       - checkout
       - run:
           name: Testing the application
           command: |
             make ci-tests
-  
-#  build:
-#    machine: true
-#    steps:
-#      - checkout
-#      - run:
-#          name: Build Docker image
-#          command: |
-#            docker build -t apollo-user-access:circleci ./src/
-#            docker images
-  
-#  deploy:
-#    executor: heroku/default
-#    steps:
-#      - checkout
-#      - run:
-#          name: Storing previous commit
-#          command: |
-#            git rev-parse HEAD > ./commit.txt
-#      - heroku/install
-#      - setup_remote_docker:
-#          version: 20.10.12
-#      - run:
-#          name: Pushing to heroku registry
-#          command: |
-#            cd src/
-#            heroku container:login
-#            heroku container:push web -a $HEROKU_APP_NAME
-#            heroku container:release web -a $HEROKU_APP_NAME
-      
+  deploy:
+    description: Deploy application to Google Kubernetes Engine
+    machine: true
+    steps:
+      - gcp-gke/install
+      - gcp-gke/init
+      - run:
+          name: Upgrade helm chart
+          command: |
+            make ci-deploy
+
 workflows:
   main:
     jobs:
+      - build
       - test
-#      - hold:
-#          requires:
-#            - test
-#          type: approval
-#      - build:
-#          requires:
-#            - hold
-#      - deploy:
-#          requires:
-#            - build
+          requires:
+            - build
+      - hold:
+          requires:
+            - test
+          type: approval
+      - deploy:
+          requires:
+            - hold
