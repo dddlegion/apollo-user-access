@@ -34,6 +34,7 @@ jobs:
     machine:
       image: ubuntu-2004:current
     steps:
+      - checkout
       - gcp-gke/install
       - run:
           name: Upgrade helm chart
