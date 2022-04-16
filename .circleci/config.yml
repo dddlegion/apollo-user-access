@@ -1,6 +1,7 @@
 version: 2.1
 
 orbs:
+  gcp-cli: circleci/gcp-cli@2.4.0
   gcr: circleci/gcp-gcr@0.15.0
   helm: circleci/helm@1.2.0
 
@@ -34,6 +35,8 @@ jobs:
       image: ubuntu-2004:current
     steps:
       - checkout
+      - gcp-cli/install
+      - gcp-cli/initialize
       - helm/install-helm-client:
           version: v3.7.0
       - run:
