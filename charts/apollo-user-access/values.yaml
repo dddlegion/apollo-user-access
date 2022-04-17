@@ -8,6 +8,15 @@ api:
     type: LoadBalancer
     port: 80
   
+  route:
+    enabled: true
+    name: useraccess-api-route
+    gatewayName: apollo-api-gateway
+    hostnames:
+      - "apollo.dddlegion.tech"
+    paths:
+      - path: /
+  
   deployment:
     replicaCount: 1
     container:

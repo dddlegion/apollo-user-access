@@ -1,0 +1,25 @@
+{{- if .Values.route.enabled -}}
+{{- $svcPort := .Values.service.port -}}
+apiVersion: gateway.networking.k8s.io/v1alpha2
+kind: HTTPRoute
+metadata:
+  name: {{ .Values.route.name }}
+spec:
+  parentRefs:
+    - name: {{ .Values.route.gatewayName }}
+  {{- with .Values.route.hostnames }}
+  hostnames:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  
+  
+  rules:
+    {{- range .Values.route.paths }}
+    - matches:
+        - path:
+            value: {{- .path }}
+      backendRefs:
+        - name: {{ include "api.name" . }}
+          port: {{ $svcPort }}
+    {{- end }}
+{{- end }}
