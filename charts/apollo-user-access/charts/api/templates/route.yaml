@@ -17,8 +17,8 @@ spec:
   rules:
     {{- range .Values.route.paths }}
     - matches:
-        - path:
-            value: {{- .path }}
+      - path:
+          value: {{ .path }}
       backendRefs:
         - name: {{ $svcName }}
           port: {{ $svcPort }}
