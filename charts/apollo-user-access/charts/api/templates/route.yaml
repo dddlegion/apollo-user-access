@@ -1,4 +1,5 @@
 {{- if .Values.route.enabled -}}
+{{- $svcName := include "api.name" . -}}
 {{- $svcPort := .Values.service.port -}}
 apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: HTTPRoute
@@ -19,7 +20,7 @@ spec:
         - path:
             value: {{- .path }}
       backendRefs:
-        - name: {{ include "api.name" . }}
+        - name: {{ $svcName }}
           port: {{ $svcPort }}
     {{- end }}
 {{- end }}
