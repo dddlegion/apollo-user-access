@@ -17,6 +17,10 @@ api:
     paths:
       - path: /
   
+  gateway:
+    name: apollo-api-gateway
+    gatewayClassName: gke-l7-gxlb
+  
   deployment:
     replicaCount: 1
     container:
