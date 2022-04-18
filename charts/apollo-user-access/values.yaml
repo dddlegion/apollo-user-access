@@ -1,11 +1,11 @@
 api:
   ingress:
-    configured: false
+    configured: true
     rewritePath: true
     pathPrefix: ""
 
   service:
-    type: LoadBalancer
+    type: ClusterIP
     port: 80
   
   deployment:
