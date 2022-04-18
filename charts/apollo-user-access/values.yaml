@@ -7,8 +7,8 @@ api:
     hosts:
       - host: apollo.dddlegion.tech
         paths:
-          - path: /user-access
-            pathType: Prefix
+          - path: /user-access(/|$)(.*)
+            pathType: ImplementationSpecific
     tls: []
 
   service:
