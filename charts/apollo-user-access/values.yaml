@@ -1,8 +1,15 @@
 api:
   ingress:
-    configured: true
-    rewritePath: true
-    pathPrefix: ""
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+    hosts:
+      - host: apollo.dddlegion.tech
+        paths:
+          - path: /user-access
+            pathType: Prefix
+    tls: []
 
   service:
     type: ClusterIP
