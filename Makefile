@@ -13,8 +13,8 @@ down:
 ci-deploy:
 	gcloud container clusters get-credentials ${CI_K8S_CLUSTER}
 	kubectl config current-context
-	helm upgrade --install apollo-user-access-release ./charts/apollo-user-access/ \
-		--namespace=default \
+	helm upgrade --install user-access ./charts/apollo-user-access/ \
+		--create-namespace --namespace=user-access \
  		--set api.deployment.container.image.tag="${CIRCLE_WORKFLOW_ID}-${CIRCLE_SHA1}" \
  		--debug
 
