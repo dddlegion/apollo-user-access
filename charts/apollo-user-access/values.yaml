@@ -1,0 +1,32 @@
+api:
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: "nginx"
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+    hosts:
+      - host: apollo.dddlegion.tech
+        paths:
+          - path: /user-access(/|$)(.*)
+            pathType: ImplementationSpecific
+    tls: []
+
+  service:
+    type: ClusterIP
+    port: 80
+  
+  deployment:
+    replicaCount: 1
+    container:
+      image:
+        repository: eu.gcr.io/dddlegion-apollo/user-access
+        pullPolicy: IfNotPresent
+        tag: ""
+      port: 80
+    resources: { }
+    tolerations: [ ]
+    affinity: { }
+  
+    nodeSelector:
+      kubernetes.io/os: linux
+      kubernetes.io/arch: amd64

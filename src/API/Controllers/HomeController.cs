@@ -10,6 +10,6 @@ public class HomeController : ControllerBase
     [HttpGet()]
     public ContentResult Index()
     {
-        return base.Content("<h1>SOSY HUI</h1>", "text/html");
+        return base.Content("<h1>UserAccess service</h1>", "text/html");
     }
 }
