@@ -48,14 +48,14 @@ jobs:
 workflows:
   main:
     jobs:
-      - build
-      - test:
-          requires:
-            - build
+      - test
       - hold:
           requires:
             - test
           type: approval
-      - deploy:
+      - build:
           requires:
             - hold
+      - deploy:
+          requires:
+            - build
